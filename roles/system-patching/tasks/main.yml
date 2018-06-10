@@ -8,10 +8,10 @@
   ignore_errors: True
   
 - name: removing old prepatch info file
-  local_action: file path={{ playbook_dir }}/{{ inventory_hostname }}-prepatch.txt state=absent
+  local_action: file path={{ patching_log_dir }}/{{ inventory_hostname }}-prepatch.txt state=absent
   
 - name: storing prepatch info
-  local_action: copy content={{ prepatch.stdout }} dest={{ playbook_dir }}/{{ inventory_hostname }}-prepatch.txt
+  local_action: copy content={{ prepatch.stdout }} dest={{ patching_log_dir }}/{{ inventory_hostname }}-prepatch.txt
   
 - name: upgrade all packages
   yum:
@@ -51,7 +51,7 @@
   ignore_errors: True
    
 - name: removing old postpatch info file
-  local_action: file path={{ playbook_dir }}/{{ inventory_hostname }}-postpatch.txt state=absent
+  local_action: file path={{ patching_log_dir }}/{{ inventory_hostname }}-postpatch.txt state=absent
   
 - name: storing postpatch info
-  local_action: copy content={{ postpatch.stdout }} dest={{ playbook_dir }}/{{ inventory_hostname }}-postpatch.txt
+  local_action: copy content={{ postpatch.stdout }} dest={{ patching_log_dir }}/{{ inventory_hostname }}-postpatch.txt
