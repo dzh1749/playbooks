@@ -2,7 +2,7 @@
 - name:
   user:
     name: "{{ sname }}"
-    password: "{{ 'P@ssw0rd' | password_hash('sha512'}}"
+    password: "{{ 'P@ssw0rd' | password_hash('sha512') }}"
     comment: "{{ sfull }}"
     shell: /bin/bash
     group: wheel
