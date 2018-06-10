@@ -2,3 +2,4 @@
 sname: fzhang
 sfull: "Fred Zhang"
 file1: "/root/text1.txt"
+patching_log_dir: "/var/log"
