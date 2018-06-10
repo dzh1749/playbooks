@@ -1,18 +1,5 @@
 ---
-- name: running prepatch info commands
-  shell: |
-    df -hP
-    cat /etc/resolv.conf
-    ntpstat
-  register: prepatch
-  ignore_errors: True
-  
-- name: removing old prepatch info file
-  local_action: file path={{ patching_log_dir }}/os-prepatch.txt state=absent
-  
-- name: storing prepatch info
-  local_action: copy content={{ prepatch.stdout }} dest={{ patching_log_dir }}/os-prepatch.txt
-  
+
 - name: upgrade all packages
   yum:
     name: '*'
@@ -40,18 +27,3 @@
     name: ntpd
     state: restarted
     enabled: yes
-  
-- name: running postpatch info commands
-  shell: |
-    df -hP
-    cat /etc/resolv.conf
-    sleep 10
-    ntpstat
-  register: postpatch
-  ignore_errors: True
-   
-- name: removing old postpatch info file
-  local_action: file path={{ patching_log_dir }}/{{ inventory_hostname }}-postpatch.txt state=absent
-  
-- name: storing postpatch info
-  local_action: copy content={{ postpatch.stdout }} dest={{ patching_log_dir }}/os-postpatch.txt
