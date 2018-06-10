@@ -1,3 +1,3 @@
 ---
 - name: create a file
-  file: path={{sfile}} state=touch owner=root grout=root mode=8644
+  file: path={{sfile}} state=touch owner=root group=root mode=8644
