@@ -1,3 +1,10 @@
 ---
+- stat: path={{ sfile }}
+  register: p
+
 - name: create a file
-  file: path={{ sfile }} state=touch owner=root group=root mode=0644
+  file: path={{ sfile }} 
+        owner=root
+        group=sys
+        mode=0555
+        state={{ "file" if  p.stat.exists else "touch"}}
