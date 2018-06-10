@@ -1,9 +1,9 @@
 ---
-- stat: path={{ sfile }}
+- stat: path={{ file1 }}
   register: p
 
 - name: create a file
-  file: path={{ sfile }} 
+  file: path={{ file1 }} 
         owner=root
         group=sys
         mode=0555
