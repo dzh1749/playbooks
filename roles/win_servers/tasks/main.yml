@@ -8,10 +8,6 @@
   win_command: netsh advfirewall set allprofiles state off
   register: netsh_out
 
-- name: disable hibernate
-  win_command: powercfg.exe –h off
-  register: powercfg_out
-  
 - name: install telnet client
   win_feature:
     name: 
