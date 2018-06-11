@@ -6,4 +6,4 @@
 
 - name: Turn off windows firewall
   win_command: netsh advfirewall set allprofiles state off
-  register:netsh_out
+  register: netsh_out
