@@ -41,3 +41,14 @@
     path: C:\temp\7z1805-x64.msi
     product_id: '{23170F69-40C1-2702-1805-000001000000}'
     state: present
+
+- name: apply critical and security windows updates
+  win_updates:
+    category_names:
+      - SecurityUpdates
+      - criticalUpdates
+    register: patch_out
+    
+ - name: reboot if required
+   win_reboot:
+   when: patch_out.reboot_required
