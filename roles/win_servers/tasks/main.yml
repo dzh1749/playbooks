@@ -51,8 +51,8 @@
   win_user:
     name: '{{ item.name }}'
     password: '{{ item.password }}'
-    group: localGroup
-    update_password: yes
+    groups: localGroup
+    update_password: no
     password_never_expired: yes
   with_items:
   - name: user1
