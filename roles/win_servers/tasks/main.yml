@@ -1,0 +1,5 @@
+---
+- name: create c:\Temp
+  win_file:
+    path: C:\Temp
+    status: present
