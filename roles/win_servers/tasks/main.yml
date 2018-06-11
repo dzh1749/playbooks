@@ -42,11 +42,33 @@
     product_id: '{23170F69-40C1-2702-1805-000001000000}'
     state: present
 
-- name: apply critical and security windows updates
-  win_updates:
-    reboot: true
-    reboot_timeout: 3600
-    category_names:
-      - SecurityUpdates
-      - criticalUpdates
-    register: update_result
+- name: create local group to contain new users
+  win_group:
+    name: LocalGroup
+    description: Allow Access to c:\Development folder
+    
+- name: create local user
+  win_user:
+    name: '{{ item.name }}'
+    password: '{{ item.password }}'
+    group: localGroup
+    update_password: no
+    password_never_expired: yes
+  with_items:
+  - name: user1
+    password: Password1
+  - name: user2
+    password: Password2
+
+- name: create Development Folder
+  win_file:
+    path: C:\Development
+    state: directory
+
+- name: set ACL of Development folder
+  win_acle:
+    path: C:\Development
+    rights: FullControl
+    state: present
+    type: allow
+    user: LocalGroup
