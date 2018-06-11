@@ -21,7 +21,7 @@
     product_id: '{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}'
     arguments: /install /passive /norestart
 
-- name: Install 7zip
+- name: Install git
   win_chocolatey:
-    name: 7z1805-x64.msi
+    name: git
     state: present
