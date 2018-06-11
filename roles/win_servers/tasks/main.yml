@@ -66,7 +66,7 @@
     state: directory
 
 - name: set ACL of Development folder
-  win_acle:
+  win_acl:
     path: C:\Development
     rights: FullControl
     state: present
