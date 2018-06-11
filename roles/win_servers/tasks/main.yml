@@ -10,6 +10,7 @@
 
 - name: install telnet client
   win_feature:
-    name: 
-    - telnet-client
+    name: Telnet-Client
     state: present
+    restart: false
+    source: C:\Windows\winsxs
