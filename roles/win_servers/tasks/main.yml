@@ -22,6 +22,6 @@
     arguments: /install /passive /norestart
 
 - name: Install 7zip
-  win_package:
+  win_chocolatey:
     path: 7z1805-x64.msi
     state: present
