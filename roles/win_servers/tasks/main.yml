@@ -52,7 +52,7 @@
     name: '{{ item.name }}'
     password: '{{ item.password }}'
     group: localGroup
-    update_password: no
+    update_password: yes
     password_never_expired: yes
   with_items:
   - name: user1
