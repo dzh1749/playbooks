@@ -18,5 +18,6 @@
   
 - name: install telnet client
   win_feature:
-    name: telnet-client
+    name: 
+    - telnet-client
     state: present
