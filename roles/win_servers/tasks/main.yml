@@ -34,4 +34,5 @@
 - name: Install 7 zip
   win_package:
     path: C:\Temp\7z1805-x64.msi
+    product_id: '{23170F69-40C1-2702-1805-000001000000}'
     state: present
