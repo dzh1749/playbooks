@@ -7,3 +7,16 @@
 - name: Turn off windows firewall
   win_command: netsh advfirewall set allprofiles state off
   register: netsh_out
+
+- name: disable hibernate
+  win_command: powercfg.exe –h off
+  register: powercfg_out
+  
+- name: label system drive
+  win_command: label c: System
+  register: label_out
+  
+- name: install telnet client
+  win_feature:
+    name: telnet-client
+    state: present
