@@ -44,11 +44,9 @@
 
 - name: apply critical and security windows updates
   win_updates:
+    reboot: true
+    reboot_timeout: 3600
     category_names:
       - SecurityUpdates
       - criticalUpdates
-    register: patch_out
-    
- - name: reboot if required
-   win_reboot:
-   when: patch_out.reboot_required
+    register: update_result
