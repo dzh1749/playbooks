@@ -23,5 +23,5 @@
 
 - name: Install 7zip
   win_package:
-    name: 7z1805-x64.msi
+    path: 7z1805-x64.msi
     state: present
