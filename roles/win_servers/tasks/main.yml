@@ -25,6 +25,11 @@
   win_chocolatey:
     name: git
     state: present
+
+- name: Install Chrome
+  win_chocolatey:
+    name: google-chrome-x64
+    state: present
     
 - name: Copy 7 Zip file to c:\temp
   win_copy:
