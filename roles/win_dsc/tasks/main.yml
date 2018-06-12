@@ -2,4 +2,4 @@
 
 - name: create c:\Soft_dev
   win_shell: |
-    New-Item -Path C:\temp -ItemType Directory
+    New-Item -Path C:\Soft_dev -ItemType Directory
