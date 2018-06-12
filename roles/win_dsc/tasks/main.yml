@@ -1,5 +1,11 @@
 ---
 
 - name: create c:\Soft_dev
-  win_shell: |
-    New-Item -Path C:\Soft_dev -ItemType Directory
+  win_dcs5: |
+    resource_name: File
+    DestinationPath: C:\temp\file
+    Contents: |
+        Hello
+        World
+    Ensure: Present
+    Type: File
