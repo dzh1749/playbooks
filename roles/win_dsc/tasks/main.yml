@@ -4,14 +4,7 @@
     resource_name: WindowsFeature
     Name: telnet-client
     
-- name: Edit HKLM reg key under specific user
-  win_regedit:
-    Key: HKLM:\Software\Anagile
-    Name: Hello
-    Data: TestData
-    type: dword
-    state: present
-  
+ 
 - name: Create file with multiple attributes
   win_dsc:
     resource_name: File
