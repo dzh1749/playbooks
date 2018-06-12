@@ -73,11 +73,10 @@
     type: allow
     user: LocalGroup
 
-- name: install IIS features that are required
+- name: use win_dsc module with the Registry DSC resource
   win_dsc:
-    resource_name: WindowsFeature
-    Name: '{{item}}'
+    resource_name: Registry
     Ensure: Present
-  with_items:
-  - Web-Server
-  - Web-Asp-Net45
+    Key: HKEY_LOCAL_MACHINE\SOFTWARE\ExampleKey
+    ValueName: TestValue
+    ValueData: TestData
