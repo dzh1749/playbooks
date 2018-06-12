@@ -1,7 +1,7 @@
 ---
 
 - name: create c:\Soft_dev
-  win_dsc5: |
+  win_dsc: |
     resource_name: File
     DestinationPath: C:\temp\file
     Contents: |
