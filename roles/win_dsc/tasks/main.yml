@@ -4,17 +4,14 @@
     resource_name: WindowsFeature
     Name: telnet-client
     
-- name: Edit HKCU reg key under specific user
+- name: Edit HKLM reg key under specific user
   win_regedit:
-    resource_name: Registry
-    Ensure: Present
-    Key: HKEY_CURRENT_USER/Software/ExampleKey
-    ValueName: TestValue
-    ValueData: TestData
-    PsDscRunAsCredential_username: '{{ansible_user}}'
-    PsDscRunAsCredentual_password: '{{ansible_password}}'
-  no_log: false
-
+    Key: HKLM:\Software\Anagile
+    Name: Hello
+    Data: TestData
+    type: dword
+    state: present
+  
 - name: Create file with multiple attributes
   win_dsc:
     resource_name: File
