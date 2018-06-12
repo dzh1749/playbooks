@@ -13,7 +13,7 @@
     ValueData: TestData
     PsDscRunAsCredential_username: '{{ansible_user}}'
     PsDscRunAsCredentual_password: '{{ansible_password}}'
-  no_log: true
+  no_log: false
 
 - name: Create file with multiple attributes
   win_dsc:
