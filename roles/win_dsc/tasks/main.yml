@@ -32,7 +32,7 @@
     - Protocol: https
       Port: 1234
       CertificateStoreName: MY
-      CertificateThumbprint: C676A89018C4D5902353545343634F35E6B3A659
+      CertificateThumbprint: e8bf3581d2c72036394c00df463d6bb007a05a01
       HostName: DSCTest
       IPAddress: '*'
       SSLFlags: '1'
