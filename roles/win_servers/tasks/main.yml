@@ -1,8 +1,8 @@
 ---
+
 - name: create c:\Temp
-  win_file:
-    path: C:\Temp
-    state: directory
+  win_shell: |
+    New-Item -Path C:\temp -ItemType Directory
 
 - name: Turn off windows firewall
   win_command: netsh advfirewall set allprofiles state off
