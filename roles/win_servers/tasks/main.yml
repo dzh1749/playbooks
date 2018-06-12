@@ -73,11 +73,6 @@
     type: allow
     user: LocalGroup
 
-- name: install xWebAdministration module
-  win_psmodule:
-    name: xWebAdministration
-    state: present
-
 - name: install IIS features that are required
   win_dsc:
     resource_name: WindowsFeature
