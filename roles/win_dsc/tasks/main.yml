@@ -1,11 +1,5 @@
 ---
-
-- name: create c:\Soft_dev
-  win_dsc: |
-    resource_name: File
-    DestinationPath: C:\temp\file
-    Contents: |
-        Hello
-        World
-    Ensure: Present
-    Type: File
+- name: Install a Windows feature with the WindowsFeature resource
+  win_dsc:
+    resource_name: WindowsFeature
+    Name: telnet-client
