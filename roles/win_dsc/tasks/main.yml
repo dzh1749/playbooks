@@ -1,3 +1,4 @@
+---
 - name: use win_dsc module
   win_dsc:
     resource_name: Registry
