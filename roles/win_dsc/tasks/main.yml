@@ -8,7 +8,7 @@
   win_regedit:
     resource_name: Registry
     Ensure: Present
-    Key: HKEY_CURRENT_USER\\Software\\ExampleKey
+    Key: HKEY_CURRENT_USER/Software/ExampleKey
     ValueName: TestValue
     ValueData: TestData
     PsDscRunAsCredential_username: '{{ansible_user}}'
