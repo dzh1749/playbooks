@@ -17,7 +17,7 @@
     guest_id: '{{ guest_id }}'
     annotation: "{{ notes }} - {{ creationdate }}"
     disk:
-    - size_gb: 150
+    - size_gb: 20
       type: thin
       datastore: '{{ vsphere_datastore }}'
     networks:
