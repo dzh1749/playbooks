@@ -20,7 +20,7 @@
     guest_template: CentOS7TPL
     guest_name: fislnxakltst01
     guest_ip: 10.150.1.179
-    exsi_host: "aklesx01.freightways.co.nz"
+    esxi_host: "aklesx01.freightways.co.nz"
     notes: "Created by Ansible at"
   
   roles:
