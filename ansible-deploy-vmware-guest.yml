@@ -8,6 +8,7 @@
     vsphere_user: "fis\admin-fredz"
     vsphere_datacenter: "MARVIN-Datacenter"
     vsphere_folder: "/FIS Admin Tools"
+    vsphere_datastore: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
     guest_network: PrimaryCore_1001
     guest_netmask: 255.255.255.0
     guest_gateway: 10.150.1.254
@@ -17,6 +18,9 @@
     guest_memory: 2048
     guest_vcpu: 2
     guest_template: CentOS7TPL
+    guest_name: fislnxakltst01
+    guest_ip: 10.150.1.179
+    notes: "Created by Ansible at"
   
   roles:
      - deploy_vmware_guest
