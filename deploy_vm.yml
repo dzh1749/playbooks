@@ -1,8 +1,0 @@
----
-- hosts: all
-  gather_facts: false
-  connection: local
-  
-  roles:
-     - deploy_vmware_guest
-     #- other roles to execute directly inside VM after deployment
