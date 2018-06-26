@@ -1,3 +1,0 @@
-[vmware_group]
-fislnxakltst01 guest_custom_ip='10.150.1.179' vsphere_datastore='MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13' ansible_host_group='vmware_group'
-fislnxakltst02 guest_custom_ip='10.150.1.180' vsphere_datastore='MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13' ansible_host_group='vmware_group'
