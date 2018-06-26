@@ -1,65 +1,52 @@
 ---
-# get date
-- set_fact: creationdate="{{lookup('pipe','date "+%Y/%m/%d %H:%M"')}}"
 
-# Create a VM from a template
-- name: create the VM
-  vmware_guest:
-    hostname: '{{ vsphere_host }}'
-    username: '{{ vsphere_user }}'
-    password: '{{ vsphere_password }}'
-    validate_certs: no
-    esxi_hostname: '{{ esxi_host }}'
-    datacenter: '{{ vsphere_datacenter }}'
-    folder: '{{ vsphere_folder }}'
-    name: '{{ inventory_hostname }}'
-    state: poweredon
-    guest_id: '{{ guest_id }}'
-    annotation: "{{ notes }} - {{ creationdate }}"
-    disk:
-    - size_gb: 20
-      type: thin
-      datastore: '{{ vsphere_datastore }}'
-    networks:
-    - name: '{{ guest_network }}'
-      ip: '{{ guest_custom_ip }}'
-      netmask: '{{ guest_netmask }}'
-      gateway: '{{ guest_gateway }}'
-      dns_servers:
-      - '{{ guest_dns_server }}'
-    hardware:
-      memory_mb: '{{ guest_memory }}'
-      num_cpus: '{{ guest_vcpu }}'
-    customization:
-      dns_servers:
-      - '{{ guest_dns_server }}'
-      domain : '{{ guest_domain_name }}'
-      hostname: '{{ inventory_hostname }}'
-    template: '{{ guest_template }}'
-    wait_for_ip_address: yes
-  delegate_to: localhost
+# Create a new VM from a template
 
-- name: add to ansible hosts file
-  lineinfile:
-    dest: /etc/ansible/hosts
-    insertafter: '^\[{{ ansible_host_group }}\]'
-    line: '{{ item }}'
-  with_items: '{{play_hosts}}'
-  run_once: true
-  delegate_to: localhost
+- name: VM from template
+  gather_facts: false
+  connection: local
+  vars:
+    vcenter_hostname: aklvc01.freightways.co.nz
+    esxhost: aklesx01.freightways.co.nz
+    datastore: MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13
+    network: "PrimaryCore_1001"
+    vmtemplate: CentOS7TPL
+    vmcluster: MARVIN-Virtual-SAN-Cluster-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13
+    notes: Created by Ansible
+    dumpfacts: False
+    
+  tasks:
+    - name: Check for required variables
+      fail: msg="Must pass name and group to -e"
+      when: name is not defined or group is not defined
 
-- name: add to /etc/hosts file
-  lineinfile:
-    dest: /etc/hosts
-    line: '{{ guest_custom_ip }} {{ inventory_hostname }}'
-  with_items: '{{play_hosts}}'
-  when: "hostvars[item].inventory_hostname == inventory_hostname"
-  delegate_to: localhost
+    - name: Check for vSphere access parameters
+      fail: msg="Must set vcenter_user and vcenter_pass in a Vault"
+      when: (vcenter_user is not defined) or (vcenter_pass is not defined)
 
-- name: accept new ssh fingerprints
-  shell: ssh-keyscan {{ guest_custom_ip }},{{inventory_hostname}} >> ~/.ssh/known_hosts
-  with_items: '{{play_hosts}}'
-  when: "hostvars[item].inventory_hostname == inventory_hostname"
-  delegate_to: localhost
+    - name: Create VM from template
+      vmware_guest:
+        validate_certs: False
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        esxi_hostname: "{{ esxhost }}"
+        datacenter: BOX
+        name: "{{ name }}"
+        template: "{{ vmtemplate }}"
+        disk:
+          - size_gb: "{{ disk_size | default(20) }}"
+            type: thin
+            datastore: "{{ datastore }}"
+        nic:
+          - type: vmxnet3
+            network: "{{ network }}"
+        hardware:
+          memory_mb: "{{ vm_memory | default(1024) }}"
+        wait_for_ip_address: True
+        state: present
+      register: newvm
 
-- setup:
+    - name: IP address info
+      debug:
+        msg: "{{ newvm.instance.ipv4 }} {{ name }}"
