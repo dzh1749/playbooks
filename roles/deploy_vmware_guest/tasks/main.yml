@@ -9,15 +9,16 @@
     username: '{{ vsphere_user }}'
     password: '{{ vsphere_password }}'
     validate_certs: no
-    esxi_hostname: '{{ esxi_host }}'
     datacenter: '{{ vsphere_datacenter }}'
+    cluster: '{{ vsphere_cluster }}'
     folder: '{{ vsphere_folder }}'
     name: '{{ guest_name }}'
     state: poweredon
+    template: '{{ guest_template }}'
     guest_id: '{{ guest_id }}'
     annotation: "{{ notes }} - {{ creationdate }}"
     disk:
-    - size_gb: 150
+    - size_gb: 30
       type: thin
       datastore: '{{ vsphere_datastore }}'
     networks:
@@ -35,8 +36,7 @@
       - '{{ guest_dns_server }}'
       domain : '{{ guest_domain_name }}'
       hostname: '{{ guest_name }}'
-    template: '{{ guest_template }}'
+    
     wait_for_ip_address: yes
   delegate_to: localhost
-
-- setup:
+  register: deploy
