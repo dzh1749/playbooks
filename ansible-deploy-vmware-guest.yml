@@ -7,7 +7,7 @@
     vsphere_host: "aklvc01.freightways.co.nz"
     vsphere_user: "admin-fredz"
     vsphere_datacenter: "MARVIN-Datacenter"
-    vsphere_folder: "/FIS Admin Tools"
+    vsphere_folder: "/FIS"
     vsphere_datastore: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
     vsphere_cluster: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
     guest_network: PrimaryCore_1001
