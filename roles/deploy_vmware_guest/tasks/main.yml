@@ -5,38 +5,26 @@
 # Create a VM from a template
 - name: create the VM
   vmware_guest:
-    hostname: '{{ vsphere_host }}'
-    username: '{{ vsphere_user }}'
+    hostname: aklvc01
+    username: admin-fredz
     password: '{{ vsphere_password }}'
     validate_certs: no
-    datacenter: '{{ vsphere_datacenter }}'
+    datacenter: Marvin-Datacenter
     cluster: '{{ vsphere_cluster }}'
-    folder: '{{ vsphere_folder }}'
-    name: '{{ guest_name }}'
+    name: fislnxakltst01
     state: poweredon
-    template: '{{ guest_template }}'
+    template: Centos7_64Guest
     guest_id: '{{ guest_id }}'
     annotation: "{{ notes }} - {{ creationdate }}"
-    disk:
-    - size_gb: 30
-      type: thin
-      datastore: '{{ vsphere_datastore }}'
-    networks:
-    - name: '{{ guest_network }}'
-      ip: '{{ guest_ip }}'
-      netmask: '{{ guest_netmask }}'
-      gateway: '{{ guest_gateway }}'
-      dns_servers:
-      - '{{ guest_dns_server }}'
     hardware:
-      memory_mb: '{{ guest_memory }}'
-      num_cpus: '{{ guest_vcpu }}'
-    customization:
-      dns_servers:
-      - '{{ guest_dns_server }}'
-      domain : '{{ guest_domain_name }}'
-      hostname: '{{ guest_name }}'
-    
-    wait_for_ip_address: yes
+      memory_mb: 2048
+      num_cpus: 2
+    disk:
+    - datastore: '{{ vsphere_datastore }}'
+      size_gb: 30
+      
+    networks:
+    - name: PriaryCore_1001
+      
   delegate_to: localhost
   register: deploy
