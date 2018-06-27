@@ -9,6 +9,7 @@
     vsphere_datacenter: "MARVIN-Datacenter"
     vsphere_folder: "/FIS Admin Tools"
     vsphere_datastore: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
+    vsphere_cluster: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
     guest_network: PrimaryCore_1001
     guest_netmask: 255.255.255.0
     guest_gateway: 10.150.1.254
