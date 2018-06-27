@@ -24,7 +24,7 @@
       size_gb: 30
       
     networks:
-    - name: PriaryCore_1001
+    - name: PrimaryCore_1001
       
   delegate_to: localhost
   register: deploy
