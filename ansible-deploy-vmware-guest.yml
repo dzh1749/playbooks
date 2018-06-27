@@ -1,5 +1,5 @@
 ---
-- hosts: fislnxakltst01
+- hosts: all
   gather_facts: false
   connection: local
   
