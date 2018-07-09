@@ -6,7 +6,6 @@
   vars:
     vsphere_host: "aklvc01.freightways.co.nz"
     vsphere_user: "admin-fredz"
-    vsphere_password: "tH1inf0@02"
     vsphere_datacenter: "MARVIN-Datacenter"
     vsphere_folder: "/FIS"
     vsphere_datastore: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
