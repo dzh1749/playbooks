@@ -4,24 +4,24 @@
   connection: local
   
   vars:
-    vsphere_host: "aklvc01.freightways.co.nz"
-    vsphere_user: "admin-fredz"
-    vsphere_datacenter: "MARVIN-Datacenter"
-    vsphere_folder: "/FIS"
-    vsphere_datastore: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
-    vsphere_cluster: "MARVIN-Virtual-SAN-Datastore-d00e6ea5-93d6-4aa4-bb9c-acb101a45c13"
-    guest_network: PrimaryCore_1001
-    guest_netmask: 255.255.255.0
-    guest_gateway: 10.150.1.254
-    guest_dns_server: 10.150.1.250
-    guest_domain_name: freightways.co.nz
+    vsphere_host: "abc.co.nz"
+    vsphere_user: "xxx"
+    vsphere_datacenter: "xyz"
+    vsphere_folder: "/sbc"
+    vsphere_datastore: "xxxxxxxxx"
+    vsphere_cluster: "xxxxxx"
+    guest_network: xxxx
+    guest_netmask: xxxx
+    guest_gateway: xxxx
+    guest_dns_server: xxxx
+    guest_domain_name: xxxx
     guest_id: centos7_64Guest
     guest_memory: 2048
     guest_vcpu: 2
     guest_template: CentOS7TPL
-    guest_name: fislnxakltst01
-    guest_ip: 10.150.1.179
-    esxi_host: "aklesx01.freightways.co.nz"
+    guest_name: xxxx
+    guest_ip: xxxx
+    esxi_host: "xxxx"
     notes: "Created by Ansible at"
   
   roles:
