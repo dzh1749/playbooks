@@ -5,13 +5,13 @@
 # Create a VM from a template
 - name: create the VM
   vmware_guest:
-    hostname: aklvc01
-    username: admin-fredz
+    hostname: xxx
+    username: xxx
     password: '{{ vsphere_password }}'
     validate_certs: no
-    datacenter: Marvin-Datacenter
+    datacenter: xxx
     cluster: '{{ vsphere_cluster }}'
-    name: fislnxakltst01
+    name: xxx
     state: poweredon
     template: Centos7_64Guest
     guest_id: '{{ guest_id }}'
